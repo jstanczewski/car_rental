@@ -14,18 +14,34 @@ class Car(Model):
     car_class = ForeignKey('CarClass', on_delete=DO_NOTHING)
     location_id = ForeignKey('Location', on_delete=DO_NOTHING)
 
+    def __str__(self):
+        return self.model
+
+    def __repr__(self):
+        return self.location_id
+
 
 class CarType(Model):
     type = CharField(max_length=20)
+
+    def __str__(self):
+        return self.type
 
 
 class CarClass(Model):
     car_class = CharField(max_length=20)
 
+    def __str__(self):
+        return self.car_class
+
 
 class Location(Model):
     address = CharField(max_length=100)
     capacity = IntegerField()
+    city = CharField(max_length=20, default=None)
+
+    def __str__(self):
+        return self.city
 
 
 class Contract(Model):

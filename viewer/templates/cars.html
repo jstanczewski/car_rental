@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    Our Rental Cars
+{% endblock %}
+{% block content %}
+<div>
+    <h1>Our Cars</h1>
+    <h3>We have {{ object_list | length }} car{{ object_list | length | pluralize:'s'}}</h3>
+    <ul>
+        {% for car in object_list %}
+        <li>
+            {{ car.model }} ({{ car.prod_year.year }}) - {{ car.location_id }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
