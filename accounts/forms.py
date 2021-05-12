@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 from django.forms import CharField, IntegerField, EmailField
 
 
@@ -13,9 +14,8 @@ class SignUpForm(UserCreationForm):
     phone_number = CharField(max_length=15)
 
     class Meta:
-        model = User
+        model = Profile
         fields = (
-            "username",
             "first_name",
             "second_name",
             "document_number",
