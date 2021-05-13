@@ -4,6 +4,7 @@ Car: {{ object.model }}
 {% endblock %}
 
 {% block content %}
+{% autoescape on %}
 <h1>{{ object.model}} </h1>
 Price: {{ object.price }}zł<br>
 Production year: {{ object.prod_year.year }}<br>
@@ -13,7 +14,7 @@ Car class: {{ object.car_class }}<br>
 Car type: {{ object.type_id }}<br>
 
 {% if object.image %}
-
+<img src="{{ object.image.url }}">
 {% endif %}
-
+{% endautoescape %}
 {% endblock %}

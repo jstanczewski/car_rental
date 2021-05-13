@@ -1,5 +1,12 @@
+import os
+
+from django.core.validators import FileExtensionValidator
 from django.db.models import Model, CharField, FloatField, DateField, IntegerField, ForeignKey, \
-    DO_NOTHING, EmailField
+    DO_NOTHING, EmailField, ImageField
+
+
+def get_upload_path(instance, filename):
+    return os.path.join(f"cars/car_{instance.id}", filename)
 
 
 class Car(Model):
@@ -8,6 +15,25 @@ class Car(Model):
     prod_year = DateField()
     mileage = IntegerField()
     capacity = IntegerField()
+    image = ImageField(
+        null=True,
+        blank=True,
+        upload_to=get_upload_path,
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=[
+                    "bmp",
+                    "jpg",
+                    "jpeg",
+                    "jpe",
+                    "gif",
+                    "tif",
+                    "tiff",
+                    "png",
+                ]
+            )
+        ],
+    )
 
     type_id = ForeignKey('CarType', on_delete=DO_NOTHING)
     car_class = ForeignKey('CarClass', on_delete=DO_NOTHING)
