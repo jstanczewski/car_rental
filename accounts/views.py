@@ -1,11 +1,18 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+
 from accounts.forms import SignUpForm
 
 
 class SubmittableLoginView(LoginView):
     template_name = 'accounts/form.html'
+
+
+class SubmittablePasswordChangeView(PasswordChangeView):
+    template_name = 'accounts/form.html'
+    success_url = reverse_lazy('index')
 
 
 def signup(request):
