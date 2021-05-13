@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db.models import Model, CharField, IntegerField, EmailField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 
 class MyUserManager(BaseUserManager):
@@ -20,6 +20,8 @@ class MyUserManager(BaseUserManager):
             address=address,
             phone_number=phone_number,
         )
+        group = Group.objects.all()
+        user.groups.add(*group)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -36,6 +38,7 @@ class MyUserManager(BaseUserManager):
             password=password,
         )
         user.is_admin = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
@@ -51,6 +54,7 @@ class Profile(AbstractBaseUser):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     objects = MyUserManager()
 
