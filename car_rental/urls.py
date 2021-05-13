@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from viewer.views import IndexView, ListCars
+from viewer.views import IndexView, ListCars, CarDetailsView
 from accounts.views import SubmittableLoginView, signup
 
 urlpatterns = [
@@ -23,5 +23,6 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('cars/', ListCars.as_view(), name='cars'),
     path('login/', SubmittableLoginView.as_view(), name='login'),
-    path('signup/', signup, name='signup')
+    path('signup/', signup, name='signup'),
+    path('cars/<int:pk>/', CarDetailsView.as_view(), name='car_details')
 ]

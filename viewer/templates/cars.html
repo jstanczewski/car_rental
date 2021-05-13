@@ -9,7 +9,7 @@
     <ul>
         {% for car in object_list %}
         <li>
-            {{ car.model }} ({{ car.prod_year.year }}) - {{ car.location_id }}
+            <a href="{% url 'car_details' car.id %}">{{ car.model }} ({{ car.prod_year.year }}) - {{ car.location_id }}</a><br>
         </li>
         {% endfor %}
     </ul>
