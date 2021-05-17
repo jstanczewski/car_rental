@@ -68,6 +68,9 @@ class Location(Model):
     def __str__(self):
         return self.city
 
+    def __repr__(self):
+        return self.city
+
 
 class Contract(Model):
     date_from = DateField()

@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db.models import Model, CharField, IntegerField, EmailField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser, Group, PermissionsMixin
 
 
 class MyUserManager(BaseUserManager):
@@ -43,7 +43,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class Profile(AbstractBaseUser):
+class Profile(AbstractBaseUser, PermissionsMixin):
     first_name = CharField(max_length=50)
     second_name = CharField(max_length=50)
     document_number = CharField(max_length=15)
@@ -55,6 +55,7 @@ class Profile(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=True)
 
     objects = MyUserManager()
 

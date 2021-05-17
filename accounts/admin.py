@@ -101,5 +101,10 @@ class GroupAdmin(admin.ModelAdmin):
     form = GroupAdminForm
     filter_horizontal = ['permissions']
 
+    def save_model(self, request, obj, form, change):
+        super(GroupAdmin, self).save_model(request, obj, form, change)
+        if 'users' in form.cleaned_data:
+            form.instance.user_set.set(form.cleaned_data['users'])
+
 
 admin.site.register(Group, GroupAdmin)

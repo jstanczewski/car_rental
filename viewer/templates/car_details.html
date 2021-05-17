@@ -11,8 +11,8 @@ Production year: {{ object.prod_year.year }}<br>
 Mileage: {{ object.mileage }} km<br>
 Capacity: {{ object.capacity }} passengers<br>
 Car class: {{ object.car_class }}<br>
-Car type: {{ object.type_id }}<br>
-
+Car type: {{ object.type_id }}<br><br>
+<button type="button" class="btn btn-primary">Rent</button><br><br>
 {% if object.image %}
 <img src="{{ object.image.url }}">
 {% endif %}
