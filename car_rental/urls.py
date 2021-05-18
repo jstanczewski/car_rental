@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 from car_rental import settings
-from viewer.views import IndexView, ListCars, CarDetailsView, search
+from viewer.views import IndexView, ListCars, CarDetailsView, search, NewContractView
 from accounts.views import SubmittableLoginView, signup, SubmittablePasswordChangeView
 
 urlpatterns = [
@@ -30,7 +30,8 @@ urlpatterns = [
     path('password_change/', SubmittablePasswordChangeView.as_view(), name='password_change'),
     path('signup/', signup, name='signup'),
     path('cars/<int:pk>/', CarDetailsView.as_view(), name='car_details'),
-    path('search/', search, name='search')
+    path('search/', search, name='search'),
+    path('contract/<int:pk>/', NewContractView.as_view(), name='new_contract')
 ]
 
 if settings.DEBUG:

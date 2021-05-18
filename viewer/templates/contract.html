@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+New contract
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            {{ form.date_from.errors }}
+            <label for="{{ form.date_from.id_for_label }}">Date from: </label>{{ form.date_from }}
+        </div>
+        <div class="form-group">
+            {{ form.date_to.errors }}
+            <label for="{{ form.date_to.id_for_label }}">Date to: </label>{{ form.date_to }}
+        </div>
+        <div class="form-group">
+            {{ form.car_id.errors }}
+            <label for="{{ form.car_id.id_for_label }}">Car: </label>{{ form.car_id }}
+        </div>
+        <div class="form-group">
+            {{ form.profile_id.errors }}
+            <label for="{{ form.profile_id.id_for_label }}">Client: </label>{{ form.profile_id }}
+        </div>
+        <input type="submit" value="submit" class="btn btn-primary">
+    </form>
+{% endblock %}

@@ -77,7 +77,10 @@ class Contract(Model):
     date_to = DateField()
 
     car_id = ForeignKey(Car, on_delete=DO_NOTHING)
-    profile_id = ForeignKey(Profile, on_delete=DO_NOTHING)
+    profile_id = ForeignKey(Profile, on_delete=DO_NOTHING, default=None)
+
+    def __str__(self):
+        return f'{self.profile_id}, {self.car_id}'
 
 
 class Client(Model):
