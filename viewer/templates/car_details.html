@@ -12,7 +12,8 @@ Mileage: {{ object.mileage }} km<br>
 Capacity: {{ object.capacity }} passengers<br>
 Car class: {{ object.car_class }}<br>
 Car type: {{ object.type_id }}<br><br>
-<button type="button" class="btn btn-primary">Rent</button><br><br>
+<button type="button" class="btn btn-primary">Rent</button>
+<input type="button" value="Return to search" onclick="history.back()" class="btn btn-secondary">
 {% if object.image %}
 <img src="{{ object.image.url }}">
 {% endif %}

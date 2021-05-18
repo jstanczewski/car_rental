@@ -57,7 +57,7 @@
     <tbody>
       {% for car in filter.qs %}
         <tr>
-          <td>{{ car.model }}</td>
+          <td><a href="{% url 'car_details' car.id %}">{{ car.model }}</a></td>
           <td>{{ car.price }}</td>
           <td>{{ car.location_id }}</td>
           <td>{{ car.type_id }}</td>

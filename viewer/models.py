@@ -1,5 +1,5 @@
 import os
-
+from accounts.models import Profile
 from django.core.validators import FileExtensionValidator
 from django.db.models import Model, CharField, FloatField, DateField, IntegerField, ForeignKey, \
     DO_NOTHING, EmailField, ImageField
@@ -77,7 +77,7 @@ class Contract(Model):
     date_to = DateField()
 
     car_id = ForeignKey(Car, on_delete=DO_NOTHING)
-    client_id = ForeignKey('Client', on_delete=DO_NOTHING)
+    profile_id = ForeignKey(Profile, on_delete=DO_NOTHING)
 
 
 class Client(Model):
@@ -88,3 +88,6 @@ class Client(Model):
     address = CharField(max_length=100)
     email_address = EmailField()
     phone_number = CharField(max_length=15)
+
+    def __str__(self):
+        return f'{self.first_name} {self.second_name}, {self.email_address}'
