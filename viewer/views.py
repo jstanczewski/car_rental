@@ -34,5 +34,7 @@ class NewContractView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('index')
 
     def dispatch(self, request, *args, **kwargs):
-        # print(request)
+        print(request)
+        self.form_class.base_fields['car_id'].initial = str(request).split('/')[2]
+        self.form_class.base_fields['profile_id'].initial = str(request).split('/')[3][:-2]
         return super(NewContractView, self).dispatch(request, *args, **kwargs)

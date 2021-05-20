@@ -31,7 +31,7 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('cars/<int:pk>/', CarDetailsView.as_view(), name='car_details'),
     path('search/', search, name='search'),
-    path('contract/<int:pk>/', NewContractView.as_view(), name='new_contract')
+    path('contract/<int:pk>/<int:fk>', NewContractView.as_view(), name='new_contract')
 ]
 
 if settings.DEBUG:

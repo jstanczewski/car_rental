@@ -1,4 +1,5 @@
 import os
+from django.db import models
 from accounts.models import Profile
 from django.core.validators import FileExtensionValidator
 from django.db.models import Model, CharField, FloatField, DateField, IntegerField, ForeignKey, \
@@ -35,9 +36,9 @@ class Car(Model):
         ],
     )
 
-    type_id = ForeignKey('CarType', on_delete=DO_NOTHING)
-    car_class = ForeignKey('CarClass', on_delete=DO_NOTHING)
-    location_id = ForeignKey('Location', on_delete=DO_NOTHING)
+    type_id = ForeignKey('CarType', on_delete=models.CASCADE)
+    car_class = ForeignKey('CarClass', on_delete=models.CASCADE)
+    location_id = ForeignKey('Location', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.model
@@ -76,8 +77,8 @@ class Contract(Model):
     date_from = DateField()
     date_to = DateField()
 
-    car_id = ForeignKey(Car, on_delete=DO_NOTHING)
-    profile_id = ForeignKey(Profile, on_delete=DO_NOTHING, default=None)
+    car_id = ForeignKey(Car, on_delete=models.CASCADE)
+    profile_id = ForeignKey(Profile, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return f'{self.profile_id}, {self.car_id}, ({self.date_from} - {self.date_to})'
