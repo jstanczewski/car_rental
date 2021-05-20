@@ -34,5 +34,5 @@ class NewContractView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('index')
 
     def dispatch(self, request, *args, **kwargs):
-        print(request)
+        # print(request)
         return super(NewContractView, self).dispatch(request, *args, **kwargs)

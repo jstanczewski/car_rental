@@ -21,7 +21,7 @@ class ContractForm(ModelForm):
         fields = '__all__'
 
     date_from = PastDateField()
-    # car_id = IntegerField(initial=Contract.car_id)
+    # car_id = IntegerField(initial=1)
     # profile_id = IntegerField(initial=1)
 
     def clean(self):

@@ -80,7 +80,7 @@ class Contract(Model):
     profile_id = ForeignKey(Profile, on_delete=DO_NOTHING, default=None)
 
     def __str__(self):
-        return f'{self.profile_id}, {self.car_id}'
+        return f'{self.profile_id}, {self.car_id}, ({self.date_from} - {self.date_to})'
 
 
 class Client(Model):
