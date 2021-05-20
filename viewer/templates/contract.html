@@ -16,14 +16,14 @@ New contract
             {{ form.date_to.errors }}
             <label for="{{ form.date_to.id_for_label }}">Date to: </label>{{ form.date_to }}
         </div>
+        <input type="submit" value="submit" class="btn btn-primary">
         <div class="form-group">
             {{ form.car_id.errors }}
-            <label for="{{ form.car_id.id_for_label }}">Car: </label>{{ form.car_id }}
+            <label for="{{ form.car_id.id_for_label }}" style="visibility:hidden">Car: {{ form.car_id }}</label>
         </div>
         <div class="form-group">
             {{ form.profile_id.errors }}
-            <label for="{{ form.profile_id.id_for_label }}">Client: </label>{{ form.profile_id }}
+            <label for="{{ form.profile_id.id_for_label }}" style="visibility:hidden">Client: {{ form.profile_id }}</label>
         </div>
-        <input type="submit" value="submit" class="btn btn-primary">
     </form>
 {% endblock %}

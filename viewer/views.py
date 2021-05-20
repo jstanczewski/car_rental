@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from accounts.models import Profile
 from viewer.filters import UserFilter
 from viewer.forms import ContractForm
 from viewer.models import Car, Contract
@@ -19,6 +20,11 @@ class ListCars(ListView):
 class CarDetailsView(DetailView):
     template_name = 'car_details.html'
     model = Car
+
+
+class UserView(DetailView):
+    template_name = 'user_profile.html'
+    model = Profile
 
 
 def search(request):

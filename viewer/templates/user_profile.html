@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ user.first_name }} profile
+{% endblock %}
+
+{% block content %}
+First name: {{ object.first_name }}<br>
+Second name: {{ object.second_name }}<br>
+Document number: {{ object.document_number }}<br>
+Age: {{ object.age }}<br>
+Address: {{ object.address }}<br>
+Email address: {{ object.email_address }}<br>
+Phone number: {{ object.phone_number }}<br><br>
+<a href="{% url 'password_change' %}">Change password</a>
+<a href="{% url 'user_update' user.id %}">Edit Your profile</a>
+{% endblock %}

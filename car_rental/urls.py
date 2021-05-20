@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 from car_rental import settings
-from viewer.views import IndexView, ListCars, CarDetailsView, search, NewContractView
-from accounts.views import SubmittableLoginView, signup, SubmittablePasswordChangeView
+from viewer.views import IndexView, ListCars, CarDetailsView, search, NewContractView, UserView
+from accounts.views import SubmittableLoginView, signup, SubmittablePasswordChangeView, \
+    UpdateProfileView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,7 +32,9 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('cars/<int:pk>/', CarDetailsView.as_view(), name='car_details'),
     path('search/', search, name='search'),
-    path('contract/<int:pk>/<int:fk>', NewContractView.as_view(), name='new_contract')
+    path('contract/<int:pk>/<int:fk>/', NewContractView.as_view(), name='new_contract'),
+    path('user/<int:pk>', UserView.as_view(), name='user_view'),
+    path('user/<int:pk>/update', UpdateProfileView.as_view(), name='user_update'),
 ]
 
 if settings.DEBUG:
