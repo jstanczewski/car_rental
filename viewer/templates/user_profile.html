@@ -13,4 +13,5 @@ Email address: {{ object.email_address }}<br>
 Phone number: {{ object.phone_number }}<br><br>
 <a href="{% url 'password_change' %}">Change password</a>
 <a href="{% url 'user_update' user.id %}">Edit Your profile</a>
+<a href="{% url 'user_contracts' user.id %}">View Your contracts</a>
 {% endblock %}

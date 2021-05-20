@@ -8,13 +8,31 @@ import viewer.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('viewer', '0001_initial'),
+        ("viewer", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='car',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to=viewer.models.get_upload_path, validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['bmp', 'jpg', 'jpeg', 'jpe', 'gif', 'tif', 'tiff', 'png'])]),
+            model_name="car",
+            name="image",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to=viewer.models.get_upload_path,
+                validators=[
+                    django.core.validators.FileExtensionValidator(
+                        allowed_extensions=[
+                            "bmp",
+                            "jpg",
+                            "jpeg",
+                            "jpe",
+                            "gif",
+                            "tif",
+                            "tiff",
+                            "png",
+                        ]
+                    )
+                ],
+            ),
         ),
     ]

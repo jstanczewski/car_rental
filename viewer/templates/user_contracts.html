@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Your contracts
+{% endblock %}
+
+{% block content %}
+<ol>
+    {% for object in object_list %}
+        {% if object.profile_id.pk == user.id %}
+            <li>{{ object }}<br></li>
+        {% endif %}
+    {% endfor %}
+</ol>
+{% endblock %}

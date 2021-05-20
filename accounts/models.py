@@ -1,4 +1,5 @@
 import django.db.models as models
+
 # from django.contrib.auth.models import User
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db.models import Model, CharField, IntegerField, EmailField
@@ -8,9 +9,19 @@ from django.contrib.auth.models import AbstractUser, Group, PermissionsMixin
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, first_name, second_name, document_number, age, address, email_address, phone_number, password=None):
+    def create_user(
+        self,
+        first_name,
+        second_name,
+        document_number,
+        age,
+        address,
+        email_address,
+        phone_number,
+        password=None,
+    ):
         if not email_address:
-            raise ValueError('Users must have an email address')
+            raise ValueError("Users must have an email address")
         user = self.model(
             email_address=self.normalize_email(email_address),
             first_name=first_name,
@@ -26,7 +37,17 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, first_name, second_name, document_number, age, address, email_address, phone_number, password=None):
+    def create_superuser(
+        self,
+        first_name,
+        second_name,
+        document_number,
+        age,
+        address,
+        email_address,
+        phone_number,
+        password=None,
+    ):
         user = self.create_user(
             first_name=first_name,
             second_name=second_name,
@@ -59,11 +80,18 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 
     objects = MyUserManager()
 
-    USERNAME_FIELD = 'email_address'
-    REQUIRED_FIELDS = ['first_name', 'second_name', 'document_number', 'age', 'address', 'phone_number']
+    USERNAME_FIELD = "email_address"
+    REQUIRED_FIELDS = [
+        "first_name",
+        "second_name",
+        "document_number",
+        "age",
+        "address",
+        "phone_number",
+    ]
 
     def __str__(self):
-        return f'{self.first_name}, {self.second_name}'
+        return f"{self.first_name} {self.second_name}"
 
     def has_perm(self, perm, obj=None):
         return True

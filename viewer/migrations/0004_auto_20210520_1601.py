@@ -7,23 +7,29 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('viewer', '0003_auto_20210518_1806'),
+        ("viewer", "0003_auto_20210518_1806"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='car',
-            name='car_class',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='viewer.carclass'),
+            model_name="car",
+            name="car_class",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="viewer.carclass"
+            ),
         ),
         migrations.AlterField(
-            model_name='car',
-            name='location_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='viewer.location'),
+            model_name="car",
+            name="location_id",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="viewer.location"
+            ),
         ),
         migrations.AlterField(
-            model_name='car',
-            name='type_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='viewer.cartype'),
+            model_name="car",
+            name="type_id",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="viewer.cartype"
+            ),
         ),
     ]

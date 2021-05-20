@@ -9,17 +9,21 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('viewer', '0002_car_image'),
+        ("viewer", "0002_car_image"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='contract',
-            name='client_id',
+            model_name="contract",
+            name="client_id",
         ),
         migrations.AddField(
-            model_name='contract',
-            name='profile_id',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL),
+            model_name="contract",
+            name="profile_id",
+            field=models.ForeignKey(
+                default=None,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

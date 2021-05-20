@@ -18,29 +18,33 @@ class ListCars(ListView):
 
 
 class CarDetailsView(DetailView):
-    template_name = 'car_details.html'
+    template_name = "car_details.html"
     model = Car
 
 
 class UserView(DetailView):
-    template_name = 'user_profile.html'
+    template_name = "user_profile.html"
     model = Profile
+
+
+class ExistingContractsView(ListView):
+    template_name = "user_contracts.html"
+    model = Contract
 
 
 def search(request):
     user_list = Car.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
-    return render(request, 'search.html', {'filter': user_filter})
+    return render(request, "search.html", {"filter": user_filter})
 
 
 class NewContractView(LoginRequiredMixin, CreateView):
-    template_name = 'contract.html'
+    template_name = "contract.html"
     model = Contract
     form_class = ContractForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy("index")
 
     def dispatch(self, request, *args, **kwargs):
-        print(request)
-        self.form_class.base_fields['car_id'].initial = str(request).split('/')[2]
-        self.form_class.base_fields['profile_id'].initial = str(request).split('/')[3][:-2]
+        self.form_class.base_fields["car_id"].initial = str(request).split("/")[2]
+        self.form_class.base_fields["profile_id"].initial = str(request).split("/")[3]
         return super(NewContractView, self).dispatch(request, *args, **kwargs)

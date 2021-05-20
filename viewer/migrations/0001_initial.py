@@ -8,80 +8,144 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Car',
+            name="Car",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('model', models.CharField(max_length=50)),
-                ('price', models.FloatField()),
-                ('prod_year', models.DateField()),
-                ('mileage', models.IntegerField()),
-                ('capacity', models.IntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("model", models.CharField(max_length=50)),
+                ("price", models.FloatField()),
+                ("prod_year", models.DateField()),
+                ("mileage", models.IntegerField()),
+                ("capacity", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='CarClass',
+            name="CarClass",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('car_class', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("car_class", models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
-            name='CarType',
+            name="CarType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', models.CharField(max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("type", models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
-            name='Client',
+            name="Client",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=50)),
-                ('second_name', models.CharField(max_length=50)),
-                ('document_number', models.CharField(max_length=15)),
-                ('age', models.IntegerField()),
-                ('address', models.CharField(max_length=100)),
-                ('email_address', models.EmailField(max_length=254)),
-                ('phone_number', models.CharField(max_length=15)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=50)),
+                ("second_name", models.CharField(max_length=50)),
+                ("document_number", models.CharField(max_length=15)),
+                ("age", models.IntegerField()),
+                ("address", models.CharField(max_length=100)),
+                ("email_address", models.EmailField(max_length=254)),
+                ("phone_number", models.CharField(max_length=15)),
             ],
         ),
         migrations.CreateModel(
-            name='Location',
+            name="Location",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('address', models.CharField(max_length=100)),
-                ('capacity', models.IntegerField()),
-                ('city', models.CharField(default=None, max_length=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("address", models.CharField(max_length=100)),
+                ("capacity", models.IntegerField()),
+                ("city", models.CharField(default=None, max_length=20)),
             ],
         ),
         migrations.CreateModel(
-            name='Contract',
+            name="Contract",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_from', models.DateField()),
-                ('date_to', models.DateField()),
-                ('car_id', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='viewer.car')),
-                ('client_id', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='viewer.client')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_from", models.DateField()),
+                ("date_to", models.DateField()),
+                (
+                    "car_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING, to="viewer.car"
+                    ),
+                ),
+                (
+                    "client_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="viewer.client",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='car',
-            name='car_class',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='viewer.carclass'),
+            model_name="car",
+            name="car_class",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING, to="viewer.carclass"
+            ),
         ),
         migrations.AddField(
-            model_name='car',
-            name='location_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='viewer.location'),
+            model_name="car",
+            name="location_id",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING, to="viewer.location"
+            ),
         ),
         migrations.AddField(
-            model_name='car',
-            name='type_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='viewer.cartype'),
+            model_name="car",
+            name="type_id",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING, to="viewer.cartype"
+            ),
         ),
     ]

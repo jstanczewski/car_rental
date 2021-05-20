@@ -9,34 +9,34 @@ from accounts.models import Profile
 
 
 class SubmittableLoginView(LoginView):
-    template_name = 'accounts/form.html'
+    template_name = "accounts/form.html"
 
 
 class SubmittablePasswordChangeView(PasswordChangeView):
-    template_name = 'accounts/form.html'
-    success_url = reverse_lazy('index')
+    template_name = "accounts/form.html"
+    success_url = reverse_lazy("index")
 
 
 class UpdateProfileView(LoginRequiredMixin, UpdateView):
-    template_name = 'accounts/form.html'
+    template_name = "accounts/form.html"
     model = Profile
     form_class = ProfileForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy("index")
 
 
 def signup(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect("index")
         else:
-            print('Errors present!')
+            print("Errors present!")
 
     else:
         form = SignUpForm()
-    return render(request, 'accounts/form.html', {'form': form})
+    return render(request, "accounts/form.html", {"form": form})

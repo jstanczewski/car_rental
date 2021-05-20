@@ -20,15 +20,24 @@ car_class_choices = tuple(car_class_choices)
 
 
 class UserFilter(django_filters.FilterSet):
-    model = django_filters.CharFilter(lookup_expr='icontains', label='Model')
-    price = django_filters.NumberFilter(lookup_expr='lte', label='Price')
-    location_id = ChoiceFilter(choices=location_choices, label='Location')
-    type_id = ChoiceFilter(choices=car_type_choices, label='Type')
-    car_class = ChoiceFilter(choices=car_class_choices, label='Class')
-    prod_year = django_filters.NumberFilter(lookup_expr='year__gte', label='Not older than')
-    capacity = django_filters.NumberFilter(lookup_expr='gte', label='Minimum capacity')
+    model = django_filters.CharFilter(lookup_expr="icontains", label="Model")
+    price = django_filters.NumberFilter(lookup_expr="lte", label="Price")
+    location_id = ChoiceFilter(choices=location_choices, label="Location")
+    type_id = ChoiceFilter(choices=car_type_choices, label="Type")
+    car_class = ChoiceFilter(choices=car_class_choices, label="Class")
+    prod_year = django_filters.NumberFilter(
+        lookup_expr="year__gte", label="Not older than"
+    )
+    capacity = django_filters.NumberFilter(lookup_expr="gte", label="Minimum capacity")
 
     class Meta:
         model = Car
-        fields = ['model', 'price', 'location_id', 'prod_year', 'capacity', 'type_id', 'car_class']
-
+        fields = [
+            "model",
+            "price",
+            "location_id",
+            "prod_year",
+            "capacity",
+            "type_id",
+            "car_class",
+        ]

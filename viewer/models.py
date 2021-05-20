@@ -2,8 +2,17 @@ import os
 from django.db import models
 from accounts.models import Profile
 from django.core.validators import FileExtensionValidator
-from django.db.models import Model, CharField, FloatField, DateField, IntegerField, ForeignKey, \
-    DO_NOTHING, EmailField, ImageField
+from django.db.models import (
+    Model,
+    CharField,
+    FloatField,
+    DateField,
+    IntegerField,
+    ForeignKey,
+    DO_NOTHING,
+    EmailField,
+    ImageField,
+)
 
 
 def get_upload_path(instance, filename):
@@ -36,9 +45,9 @@ class Car(Model):
         ],
     )
 
-    type_id = ForeignKey('CarType', on_delete=models.CASCADE)
-    car_class = ForeignKey('CarClass', on_delete=models.CASCADE)
-    location_id = ForeignKey('Location', on_delete=models.CASCADE)
+    type_id = ForeignKey("CarType", on_delete=models.CASCADE)
+    car_class = ForeignKey("CarClass", on_delete=models.CASCADE)
+    location_id = ForeignKey("Location", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.model
@@ -81,7 +90,7 @@ class Contract(Model):
     profile_id = ForeignKey(Profile, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return f'{self.profile_id}, {self.car_id}, ({self.date_from} - {self.date_to})'
+        return f"{self.profile_id}, {self.car_id}, ({self.date_from} - {self.date_to})"
 
 
 class Client(Model):
@@ -94,4 +103,4 @@ class Client(Model):
     phone_number = CharField(max_length=15)
 
     def __str__(self):
-        return f'{self.first_name} {self.second_name}, {self.email_address}'
+        return f"{self.first_name} {self.second_name}, {self.email_address}"
