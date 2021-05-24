@@ -31,6 +31,16 @@ class ExistingContractsView(ListView):
     template_name = "user_contracts.html"
     model = Contract
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contract_list = self.get_queryset()
+        value_dict = {}
+        for contract in contract_list:
+            interval = contract.date_to - contract.date_from
+            value_dict[contract.id] = (int(contract.car_id.price) * interval.days)
+        context['value_dict'] = value_dict
+        return context
+
 
 def search(request):
     user_list = Car.objects.all()
