@@ -8,7 +8,7 @@ Your contracts
 <ol>
     {% for object in object_list %}
         {% if object.profile_id.pk == user.id %}
-            <li>{{ object }}<br></li>
+            <li>{{ object }}, Value: {{ value }}<br></li>
         {% endif %}
     {% endfor %}
 </ol>
