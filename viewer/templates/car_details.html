@@ -5,17 +5,18 @@ Car: {{ object.model }}
 
 {% block content %}
 {% autoescape on %}
-<h1>{{ object.model}} </h1>
-Price: {{ object.price }}zł<br>
-Production year: {{ object.prod_year.year }}<br>
-Mileage: {{ object.mileage }} km<br>
-Capacity: {{ object.capacity }} passengers<br>
-Car class: {{ object.car_class }}<br>
-Car type: {{ object.type_id }}<br><br>
-{% if user.is_authenticated %}
-    <button type="button" class="btn btn-dark"><a href="{% url 'new_contract' car.id user.id %}">Rent</a></button>
-{% endif %}
-<input type="button" value="Return to search" onclick="history.back()" class="btn btn-dark"><br><br>
+<div class="car-details">
+    <h1>{{ object.model}} </h1>
+    Price: {{ object.price }}zł<br>
+    Production year: {{ object.prod_year.year }}<br>
+    Mileage: {{ object.mileage }} km<br>
+    Capacity: {{ object.capacity }} passengers<br>
+    Car class: {{ object.car_class }}<br>
+    Car type: {{ object.type_id }}<br><br>
+</div>
+<div class="clear"></div>
+<button type="button" class="form-btn"><a href="{% url 'new_contract' car.id user.id %}">Rent</a></button>
+<input type="button" value="Return to search" onclick="history.back()" class="form-btn"><br><br>
 {% if object.image %}
 <img src="{{ object.image.url }}">
 {% endif %}

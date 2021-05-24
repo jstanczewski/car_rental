@@ -5,15 +5,18 @@ Your contracts
 {% endblock %}
 
 {% block content %}
-<ol>
-    {% for object in object_list %}
-        {% if object.profile_id.pk == user.id %}
-            {% for key, value in value_dict.items %}
-                {% if key == object.id %}
-                    <li> {{ object }}, Value: {{ value }}<br></li>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+<div class="contract">
+    <h1>Your contracts:</h1>
+    <ol>
+        {% for object in object_list %}
+            {% if object.profile_id.pk == user.id %}
+                {% for key, value in value_dict.items %}
+                    {% if key == object.id %}
+                        <li> {{ object }}, total amount: {{ value }}<br></li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
     {% endfor %}
-</ol>
+    </ol>
+</div>
 {% endblock %}

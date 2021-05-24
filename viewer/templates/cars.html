@@ -3,16 +3,18 @@
     Our Rental Cars
 {% endblock %}
 {% block content %}
-<div>
-    <h1>Our Cars</h1>
-    <h3>We have {{ object_list | length }} car{{ object_list | length | pluralize:'s'}}</h3>
-    <ul>
-        {% for car in object_list %}
-        <li>
-            <a href="{% url 'car_details' car.id %}">{{ car.model }} ({{ car.prod_year.year }}) - {{ car.location_id }}</a><br>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <div id="cars-models">
+        <h1>Our Cars</h1>
+        <h3>We currently have {{ object_list | length }} car{{ object_list | length | pluralize:"s"}} models for rent</h3>
+        <ol>
+            {% for car in object_list %}
+            <li>
+                <a href="{% url 'car_details' car.id %}">{{ car.model }} ({{ car.prod_year.year }}) - {{ car.location_id }}</a><br>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
 </div>
 {% endblock %}
 

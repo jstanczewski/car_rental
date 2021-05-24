@@ -4,72 +4,73 @@
 
 {% block content %}
   <form method="get">
-    <div class="well">
-      <h4 style="margin-top: 0">Filter</h4>
-      <div class="row">
-        <div class="form-group col-sm-4 col-md-3">
+    <div class="filter">
+      <h2 style="margin-top: 0">Filter</h2>
+        <div class="filter-field">
           {{ filter.form.model.label_tag }}
           {% render_field filter.form.model class="form-control" %}
         </div>
-        <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.price.label_tag }}
           {% render_field filter.form.price class="form-control" %}
         </div>
-        <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.location_id.label_tag }}
           {% render_field filter.form.location_id class="form-control" %}
         </div>
-        <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.type_id.label_tag }}
           {% render_field filter.form.type_id class="form-control" %}
         </div>
-          <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.car_class.label_tag }}
           {% render_field filter.form.car_class class="form-control" %}
         </div>
-          <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.prod_year.label_tag }}
           {% render_field filter.form.prod_year class="form-control" %}
         </div>
-          <div class="form-group col-sm-4 col-md-3">
+        <div class="filter-field">
           {{ filter.form.capacity.label_tag }}
           {% render_field filter.form.capacity class="form-control" %}
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary">
-        <span class="glyphicon glyphicon-search"></span> Search
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="form-btn">
+        <span class="glyphicon glyphicon-search"></span>Search
       </button>
     </div>
   </form>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>Price</th>
-        <th>Location</th>
-        <th>Type</th>
-        <th>Class</th>
-        <th>Production year</th>
-        <th>Capacity</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for car in filter.qs %}
+  <div class="table">
+    <table class="table table-bordered">
+      <thead>
         <tr>
-          <td><a href="{% url 'car_details' car.id %}">{{ car.model }}</a></td>
-          <td>{{ car.price }}</td>
-          <td>{{ car.location_id }}</td>
-          <td>{{ car.type_id }}</td>
-          <td>{{ car.car_class }}</td>
-          <td>{{ car.prod_year.year }}</td>
-          <td>{{ car.capacity }}</td>
+          <th>Model</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Type</th>
+          <th>Class</th>
+          <th>Production year</th>
+          <th>Capacity</th>
         </tr>
-      {% empty %}
-        <tr>
-          <td colspan="5">We don't have cars with such requirements</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for car in filter.qs %}
+          <tr>
+            <td><a href="{% url 'car_details' car.id %}">{{ car.model }}</a></td>
+            <td>{{ car.price }}</td>
+            <td>{{ car.location_id }}</td>
+            <td>{{ car.type_id }}</td>
+            <td>{{ car.car_class }}</td>
+            <td>{{ car.prod_year.year }}</td>
+            <td>{{ car.capacity }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5">We don't have cars with such requirements</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
