@@ -9,7 +9,6 @@ from django.db.models import (
     DateField,
     IntegerField,
     ForeignKey,
-    DO_NOTHING,
     EmailField,
     ImageField,
 )
@@ -53,7 +52,16 @@ class Car(Model):
         return self.model
 
     def __repr__(self):
-        return self.location_id
+        return self.model
+
+    def save(self, *args, **kwargs):
+        location_capacity = self.location_id.capacity
+        for _ in Car.objects.filter(location_id=self.location_id):
+            location_capacity -= 1
+        if location_capacity <= 0:
+            raise IndexError(f'{self.location_id} capacity overloaded')
+        else:
+            super().save(*args, **kwargs)
 
 
 class CarType(Model):
