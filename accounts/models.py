@@ -1,11 +1,7 @@
 import django.db.models as models
-
-# from django.contrib.auth.models import User
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.db.models import Model, CharField, IntegerField, EmailField
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser, Group, PermissionsMixin
+from django.db.models import CharField, IntegerField, EmailField
+from django.contrib.auth.models import Group, PermissionsMixin
 
 
 class MyUserManager(BaseUserManager):
@@ -98,7 +94,3 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
-
-    @property
-    def is_staff(self):
-        return self.is_admin
