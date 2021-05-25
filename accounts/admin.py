@@ -74,6 +74,9 @@ class UserAdmin(BaseUserAdmin):
         "email_address",
         "phone_number",
         "is_admin",
+        "is_staff",
+        "is_active",
+        "is_superuser",
     )
     list_filter = ("is_admin",)
     fieldsets = (
@@ -91,7 +94,7 @@ class UserAdmin(BaseUserAdmin):
                 )
             },
         ),
-        ("Permissions", {"fields": ("is_admin",)}),
+        ("Permissions", {"fields": ("is_admin", "is_staff", "is_active")}),
     )
 
     add_fieldsets = (
