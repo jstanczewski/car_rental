@@ -90,12 +90,25 @@ class Location(Model):
         return self.city
 
 
+class Insurance(Model):
+    type = CharField(max_length=100)
+    price = IntegerField()
+    description = CharField(max_length=500, default=None)
+
+    def __str__(self):
+        return f'{self.type}, {self.price}'
+
+
 class Contract(Model):
     date_from = DateField()
     date_to = DateField()
 
     car_id = ForeignKey(Car, on_delete=models.CASCADE)
     profile_id = ForeignKey(Profile, on_delete=models.CASCADE, default=None)
+    insurance_1_id = ForeignKey(Insurance, null=True, related_name='insurance_1_id', on_delete=models.CASCADE, blank=True)
+    insurance_2_id = ForeignKey(Insurance, null=True, related_name='insurance_2_id', on_delete=models.CASCADE, blank=True)
+    insurance_3_id = ForeignKey(Insurance, null=True, related_name='insurance_3_id', on_delete=models.CASCADE, blank=True)
+    insurance_4_id = ForeignKey(Insurance, null=True, related_name='insurance_4_id', on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return f"{self.profile_id}, {self.car_id}, ({self.date_from} - {self.date_to})"
