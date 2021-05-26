@@ -37,7 +37,16 @@ class ExistingContractsView(ListView):
         value_dict = {}
         for contract in contract_list:
             interval = contract.date_to - contract.date_from
-            value_dict[contract.id] = (int(contract.car_id.price) * interval.days)
+            ins_price = 0
+            if contract.insurance_1_id is not None:
+                ins_price += contract.insurance_1_id.price
+            if contract.insurance_2_id is not None:
+                ins_price += contract.insurance_2_id.price
+            if contract.insurance_3_id is not None:
+                ins_price += contract.insurance_3_id.price
+            if contract.insurance_4_id is not None:
+                ins_price += contract.insurance_4_id.price
+            value_dict[contract.id] = (int(contract.car_id.price) + ins_price) * interval.days
         context['value_dict'] = value_dict
         return context
 
