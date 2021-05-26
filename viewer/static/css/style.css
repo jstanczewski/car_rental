@@ -319,3 +319,16 @@ a {
   width: 300px;
   margin: 20 0 10 0px;
 }
+
+.form-group select {
+  padding: 5px;
+  margin: 10 0px;
+  font-size: 16px;
+}
+
+.insurance-desc {
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  font-size: 20px;
+}

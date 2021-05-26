@@ -16,7 +16,29 @@ New contract
             {{ form.date_to.errors }}
             <label for="{{ form.date_to.id_for_label }}">Date to: <br></label>{{ form.date_to }}
         </div>
+        <div class="form-group">
+            {{ form.insurance_1_id.errors }}
+            <label for="{{ form.insurance_1_id.id_for_label }}">Choose Your first insurance (optional): <br></label>{{ form.insurance_1_id }}
+        </div>
+        <div class="form-group">
+            {{ form.insurance_2_id.errors }}
+            <label for="{{ form.insurance_2_id.id_for_label }}">Choose Your second insurance (optional): <br></label>{{ form.insurance_2_id }}
+        </div>
+        <div class="form-group">
+            {{ form.insurance_3_id.errors }}
+            <label for="{{ form.insurance_3_id.id_for_label }}">Choose Your third insurance (optional): <br></label>{{ form.insurance_3_id }}
+        </div>
+        <div class="form-group">
+            {{ form.insurance_4_id.errors }}
+            <label for="{{ form.insurance_4_id.id_for_label }}">Choose Your fourth insurance (optional): <br></label>{{ form.insurance_4_id }}
+        </div>
         <input type="submit" value="submit" class="form-btn">
+        <div class="insurance-desc">
+            1. ESP provides international renters visiting the U.S. with coverage for medical expenses resulting from sickness.<br> Price: 25/day <br>
+            2. Supplemental Liability Insurance protects you and all authorized drivers against third-party injury and property-damage claims. <br> Price: 75/day <br>
+            3. PAE protects you and your passengers against accident, injury, and loss to personal property. <br> Price: 35/day <br>
+            4. LDW is an option that relieves you of financial responsibility if your rental car is damaged or stolen. <br> Price: 50/day <br>
+        </div>
         <div class="form-group">
             {{ form.car_id.errors }}
             <label for="{{ form.car_id.id_for_label }}" style="visibility:hidden">Car: {{ form.car_id }}</label>
