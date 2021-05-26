@@ -314,3 +314,8 @@ a {
   margin-bottom: 30px;
   text-align: center;
 }
+
+.form-group input[type=text] {
+  width: 300px;
+  margin: 20 0 10 0px;
+}

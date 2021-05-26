@@ -10,13 +10,13 @@ New contract
         {{ form.non_field_errors }}
         <div class="form-group">
             {{ form.date_from.errors }}
-            <label for="{{ form.date_from.id_for_label }}">Date from: </label>{{ form.date_from }}
+            <label for="{{ form.date_from.id_for_label }}">Date from: <br></label>{{ form.date_from }}
         </div>
         <div class="form-group">
             {{ form.date_to.errors }}
-            <label for="{{ form.date_to.id_for_label }}">Date to: </label>{{ form.date_to }}
+            <label for="{{ form.date_to.id_for_label }}">Date to: <br></label>{{ form.date_to }}
         </div>
-        <input type="submit" value="submit" class="btn btn-primary">
+        <input type="submit" value="submit" class="form-btn">
         <div class="form-group">
             {{ form.car_id.errors }}
             <label for="{{ form.car_id.id_for_label }}" style="visibility:hidden">Car: {{ form.car_id }}</label>
