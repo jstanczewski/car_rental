@@ -15,7 +15,9 @@ Car: {{ object.model }}
     Car type: {{ object.type_id }}<br><br>
 </div>
 <div class="clear"></div>
-<button type="button" class="form-btn"><a href="{% url 'new_contract' car.id user.id %}">Rent</a></button>
+{% if user.is_authenticated %}
+    <button type="button" class="form-btn"><a href="{% url 'new_contract' car.id user.id %}">Rent</a></button>
+{% endif %}
 <input type="button" value="Return to search" onclick="history.back()" class="form-btn"><br><br>
 {% if object.image %}
 <img src="{{ object.image.url }}">
