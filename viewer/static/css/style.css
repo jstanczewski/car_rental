@@ -79,6 +79,7 @@ html, body {
   padding: 14px 16px;
   background-color: inherit;
   height: 55px;
+  min-width: 160px;
 }
 
 #navbar a:hover, .dropdown:hover .dropbtn {
@@ -231,18 +232,27 @@ th {
 }
 
 .filter input {
-  width: 33%;
+  width: 50%;
+  margin-right: 150px;
 }
 
 .filter-field {
   min-width: 50%;
   float: left;
-  text-align: left;
+  text-align: right;
   min-height: 50px;
 }
 
 .filter-field label {
   min-height: 50px;
+  margin-right: 20px;
+}
+
+.filter-field select {
+  width: 50%;
+  padding: 8px;
+  font-size: 18px;
+  margin-right: 150px;
 }
 
 .btn-container {
